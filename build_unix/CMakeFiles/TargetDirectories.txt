@@ -1,0 +1,12 @@
+/home/pi/knx/baos/build_unix/thirdparty/poco/Foundation/CMakeFiles/Foundation.dir
+/home/pi/knx/baos/build_unix/thirdparty/poco/Net/CMakeFiles/Net.dir
+/home/pi/knx/baos/build_unix/kdrive/CMakeFiles/kdriveBAOS.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosDatapointDescription.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosEnumerator.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosEventListener.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosLightSwitcher.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosMultiConnector.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosMultiThreaded.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosSerial.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosSerialLightSwitcher.dir
+/home/pi/knx/baos/build_unix/samples/c++/CMakeFiles/sample_BaosServerItem.dir
