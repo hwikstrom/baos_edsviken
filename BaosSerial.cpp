@@ -26,6 +26,35 @@ using Poco::format;
 
 CLASS_LOGGER("BaosSerial")
 
+namespace
+{
+
+	void getServerItems(BaosServerItems baosServerItems)
+	{
+		try
+		{
+			poco_information(LOGGER(), format("(t4) Hardware Type: %s", LoggerFormatter::toHex(baosServerItems.getHardwareType())));
+			poco_information(LOGGER(), format("(t4) Hardware Version: %d", (int) baosServerItems.getHardwareVersion()));
+			poco_information(LOGGER(), format("(t4) Firmware Version: %d", (int) baosServerItems.getFirmwareVersion()));
+			poco_information(LOGGER(), format("(t4) Manufacture Code Device: %u", baosServerItems.getManufactureCodeDevice()));
+			poco_information(LOGGER(), format("(t4) Manufacture Code App: %u", baosServerItems.getManufactureCodeApp()));
+			poco_information(LOGGER(), format("(t4) Application Id: %u", baosServerItems.getApplicationId()));
+			poco_information(LOGGER(), format("(t4) Application Version: %d", (int) baosServerItems.getApplicationVersion()));
+			poco_information(LOGGER(), format("(t4) Serial Number: %s", LoggerFormatter::toHex(baosServerItems.getSerialNumber())));
+			poco_information(LOGGER(), format("(t4) Time Since Reset: %lu", baosServerItems.getTimeSinceReset()));
+			poco_information(LOGGER(), format("(t4) Bus Connected: %b", baosServerItems.isBusConnected()));
+			poco_information(LOGGER(), format("(t4) Max Buffer Size: %u", baosServerItems.getMaxBufferSize()));
+			poco_information(LOGGER(), format("(t4) Buffer Size: %u", baosServerItems.getBufferSize()));
+			poco_information(LOGGER(), format("(t4) Length of Description String: %u", baosServerItems.getLengthOfDescriptionString()));
+			poco_information(LOGGER(), format("(t4) Programming Mode: %d", (int) baosServerItems.getProgrammingMode()));
+		}
+		catch (Exception& exception)
+		{
+			poco_error(LOGGER(), format("(t4) %s", exception.displayText()));
+		}
+	}
+}
+
 int main(int argc, char* argv[])
 {
 	// configure the logging channel
@@ -37,9 +66,12 @@ int main(int argc, char* argv[])
 		FT12Connector::Ptr connector = std::make_shared<FT12Connector>();
 		connector->open("/dev/ttyAMA0");
 
+		getServerItems(connector)
+		
 		// get the Serial Number
 		BaosServerItems baosServerItems(connector);
 		poco_information(LOGGER(), format("Serial Number: %s", LoggerFormatter::toHex(baosServerItems.getSerialNumber())));
+		poco_information(LOGGER(), format("(t4) Bus Connected: %b", baosServerItems.isBusConnected()));
 
 		// Reads the data point descriptions
 		BaosDatapointDescriptions baosDatapointDescriptions(connector);
